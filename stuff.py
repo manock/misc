@@ -1,5 +1,7 @@
 import numpy as np
 from scipy.stats import norm
+from sklearn.pipeline import Pipeline
+import numpy as np
 
 class ecdf():
     # R-like ecdf class
@@ -29,10 +31,10 @@ class Pipeline_2(Pipeline):
             Data to predict on. Must fulfill input requirements of first step of the pipeline.
             """
 
-            Xt = X
-            for name, transform in self.steps[:-1]:
-                    Xt = transform.transform(Xt)
-                    return Xt
+        Xt = X
+        for name, transform in self.steps[:-1]:
+            Xt = transform.transform(Xt)
+        return Xt
 
 def plot_decision(X, y, fitted_pipe, cmap = 'coolwarm', y_label='$P(y=1)$', lab_x1 = '$X_1$', lab_x2 = '$X_2$'):
     '''
