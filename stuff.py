@@ -61,6 +61,5 @@ def plot_decision(X, y, fitted_pipe, cmap = 'coolwarm', y_label='$P(y=1)$', lab_
 
     ax.set(aspect="equal",
                    xlim=(lims_low[0], lims_high[0]), ylim=(lims_low[1], lims_high[1]),
-                          xlabel=lab_x1, ylabel=lab_x2);
-    plt.show()
-    return
+                          xlabel=lab_x1, ylabel=lab_x2 
+    return f
