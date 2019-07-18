@@ -40,12 +40,12 @@ def plot_decision(X, y, fitted_pipe, cmap = 'coolwarm', y_label='$P(y=1)$', lab_
     implementing just_transforms method (like Pipeline_2). X has to be 2 dimensional OR include a dimension reduction step.
     '''
     normalized = pipe.just_transforms(all_X)
-    cmap = 'coolwarm'
+    cmap = cmap
     lims_low = normalized.min(axis = 0) + (-.01, .01)
     lims_high = normalized.max(axis = 0)+ (-.01, .01)
     xx, yy = np.mgrid[lims_low[0]:lims_high[0]+.01:.01, lims_low[1]:lims_high[1]+.01:.01]
     grid = np.c_[xx.ravel(), yy.ravel()]
-    probs = estim.predict_proba(grid)[:, 1].reshape(xx.shape)
+    probs = pipe.steps[-1][1].predict_proba(grid)[:, 1].reshape(xx.shape)
 
     f, ax = plt.subplots(figsize=(15, 10))
     contour = ax.contourf(xx, yy, probs, 25, cmap=cmap,
